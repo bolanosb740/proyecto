@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<rect width="1000" height="700" fill="#03060d"/>
+<path d="M0 500L1000 220V700H0Z" fill="#075bd4"/>
+<path d="M0 0L1000 480V0Z" fill="#0a1528"/>
+<g fill="#fff">
+<circle cx="500" cy="315" r="92"/>
+<path d="M500 223l34 25-13 41h-42l-13-41z"/>
+<path d="M410 300l38-10 24 34-25 34-39-10z"/>
+<path d="M590 300l-38-10-24 34 25 34 39-10z"/>
+</g>
+<text x="70" y="110" fill="#fff" font-family="Arial" font-size="58" font-weight="900">COPA JÓVENES</text>
+<text x="70" y="160" fill="#63a5ff" font-family="Arial" font-size="30" font-weight="700">FUTPLAY</text>
+</svg>

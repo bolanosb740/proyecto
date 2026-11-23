@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+<rect width="1200" height="800" fill="#04070d"/>
+<path d="M0 520L1200 300V800H0Z" fill="#075bd4"/>
+<circle cx="590" cy="390" r="120" fill="#fff"/>
+<path d="M590 270l45 34-16 52h-58l-16-52zM475 355l48-15 30 43-31 42-49-13zM705 355l-48-15-30 43 31 42 49-13z" fill="#0268fb"/>
+<text x="70" y="110" fill="#fff" font-family="Arial" font-size="58" font-weight="900">EN LA CANCHA</text>
+</svg>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTPLAY | Dashboard Jugador</title>
+  <link rel="stylesheet" href="./css/estilos.css">
+  <link rel="stylesheet" href="./css/estilos-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="estructura-dashboard">
+    <aside class="menu-lateral-panel">
+      <div class="encabezado-menu-lateral">
+        <img src="imágenes/logo-futplay.jpg" alt="FUTPLAY">
+        <h2>FUTPLAY</h2>
+      </div>
+      <ul class="lista-opciones-menu">
+        <li class="opcion-activa"><a href="#">⚽ Mi Perfil</a></li>
+        <li><a href="index.html">🏠 Volver al Inicio</a></li>
+      </ul>
+    </aside>
+
+    <main class="contenido-panel-principal">
+      <div class="barra-superior-usuario">
+        <h1>PANEL DE <span>JUGADOR</span></h1>
+        <div class="tarjeta-usuario-sesion">
+          <span class="etiqueta-rol-usuario">Jugador</span>
+          <strong id="usr-nombre">Cargando...</strong>
+          <button id="btn-logout" class="boton-secundario" style="padding: 4px 10px; font-size: 10px; cursor:pointer;">Cerrar Sesión</button>
+        </div>
+      </div>
+
+      <div class="bloque-seccion-dashboard">
+        <h2>BIENVENIDO A TU PANEL DE JUGADOR</h2>
+        <p style="color:var(--gris);">Aquí podrás consultar las invitaciones de tus entrenadores y ver las planillas de los torneos activos.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

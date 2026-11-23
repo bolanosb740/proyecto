@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTPLAY | Dashboard Organizador</title>
+  <link rel="stylesheet" href="./css/estilos.css">
+  <link rel="stylesheet" href="./css/estilos-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="estructura-dashboard">
+    <aside class="menu-lateral-panel">
+      <div class="encabezado-menu-lateral">
+        <img src="imágenes/logo-futplay.jpg" alt="FUTPLAY">
+        <h2>FUTPLAY</h2>
+      </div>
+      <ul class="lista-opciones-menu">
+        <li class="opcion-activa"><a href="#">🏆 Crear / Gestionar Torneos</a></li>
+        <li><a href="#afiliaciones">🛡️ Afiliar / Expulsar Equipos</a></li>
+        <li><a href="index.html">🏠 Volver al Inicio</a></li>
+      </ul>
+    </aside>
+
+    <main class="contenido-panel-principal">
+      <div class="barra-superior-usuario">
+        <h1>PANEL DE <span>ORGANIZADOR DE TORNEOS</span></h1>
+        <div class="tarjeta-usuario-sesion">
+          <span class="etiqueta-rol-usuario">Organizador Oficial</span>
+          <strong id="usr-nombre">Cargando...</strong>
+          <button id="btn-logout" class="boton-secundario" style="padding: 4px 10px; font-size: 10px; cursor:pointer;">Cerrar Sesión</button>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 1: CREAR TORNEO -->
+      <div class="bloque-seccion-dashboard">
+        <h2>CREAR NUEVO TORNEO DE MICROFÚTBOL</h2>
+        <form id="form-crear-torneo">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+            <div class="campo-formulario">
+              <label style="color:var(--negro);">Nombre del Torneo:</label>
+              <input type="text" id="t-nombre" placeholder="Ej. Copa Élite FutPlay" style="background:var(--claro); color:var(--negro);" required>
+            </div>
+            <div class="campo-formulario">
+              <label style="color:var(--negro);">Ruta de Imagen / Logo:</label>
+              <input type="text" id="t-imagen" value="imágenes/torneo1.svg" style="background:var(--claro); color:var(--negro);" required>
+            </div>
+            <div class="campo-formulario">
+              <label style="color:var(--negro);">Inscripción por Persona (COP):</label>
+              <input type="number" id="t-valor-persona" min="0" placeholder="20000" style="background:var(--claro); color:var(--negro);" required>
+            </div>
+            <div class="campo-formulario">
+              <label style="color:var(--negro);">Inscripción por Equipo (COP):</label>
+              <input type="number" id="t-valor-equipo" min="0" placeholder="150000" style="background:var(--claro); color:var(--negro);" required>
+            </div>
+          </div>
+
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Descripción del Torneo (Mín. 100 - Máx. 500 caracteres):</label>
+            <textarea id="t-desc" rows="3" style="background:var(--claro); color:var(--negro); width:100%;" placeholder="Escribe aquí los detalles del torneo, las reglas y la sede..." required></textarea>
+            <small id="char-counter" style="color:var(--gris);">0 / 500 caracteres</small>
+          </div>
+
+          <button type="submit" class="boton_final" style="margin-top:10px; border:none; cursor:pointer;">PUBLICAR TORNEO</button>
+        </form>
+      </div>
+
+      <!-- SECCIÓN 2: MIS TORNEOS Y ESTADO -->
+      <div class="bloque-seccion-dashboard">
+        <h2>MIS TORNEOS CREADOS</h2>
+        <div id="contenedor-torneos" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px;"></div>
+      </div>
+
+      <!-- SECCIÓN 3: AFILIAR / EXPULSAR EQUIPOS Y JUGADORES -->
+      <div class="bloque-seccion-dashboard" id="afiliaciones">
+        <h2>AFILIAR / SACAR EQUIPOS Y JUGADORES</h2>
+        
+        <form id="form-afiliar" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-bottom:20px;">
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Selecciona Torneo:</label>
+            <select id="a-torneo" style="background:var(--claro); color:var(--negro);" required></select>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Tipo Afiliación:</label>
+            <select id="a-tipo" style="background:var(--claro); color:var(--negro);">
+              <option value="equipo">Equipo</option>
+              <option value="jugador">Jugador</option>
+            </select>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Nombre del Equipo/Jugador:</label>
+            <input type="text" id="a-nombre" placeholder="Ej. Halcones FC" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario" style="display:flex; align-items:flex-end;">
+            <button type="submit" class="boton_final" style="width:100%; border:none; cursor:pointer;">AFILIAR AHORA</button>
+          </div>
+        </form>
+
+        <h3 style="font-size:20px; color:var(--negro); margin-bottom:10px;">Gestión de Participantes por Torneo</h3>
+        <div id="tabla-participantes"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard-organizador.js"></script>
+</body>
+</html>

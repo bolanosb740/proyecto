@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTPLAY | Dashboard Administrador General</title>
+  <link rel="stylesheet" href="./css/estilos.css">
+  <link rel="stylesheet" href="./css/estilos-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="estructura-dashboard">
+    <aside class="menu-lateral-panel">
+      <div class="encabezado-menu-lateral">
+        <img src="imágenes/logo-futplay.jpg" alt="FUTPLAY">
+        <h2>FUTPLAY</h2>
+      </div>
+      <ul class="lista-opciones-menu">
+        <li class="opcion-activa"><a href="#usuarios">👥 Gestión de Usuarios</a></li>
+        <li><a href="#torneos">🏆 Control Total de Torneos</a></li>
+        <li><a href="#posiciones">📊 Posiciones y Tarjetas</a></li>
+        <li><a href="#entrenadores">🎒 Inventario y Convocatorias</a></li>
+        <li><a href="index.html">🏠 Volver al Inicio</a></li>
+      </ul>
+    </aside>
+
+    <main class="contenido-panel-principal">
+      <div class="barra-superior-usuario">
+        <h1>PANEL DE <span>ADMINISTRACIÓN GENERAL</span></h1>
+        <div class="tarjeta-usuario-sesion">
+          <span class="etiqueta-rol-usuario" style="background:#dc2626;">Super Admin</span>
+          <strong id="usr-nombre">Cargando...</strong>
+          <button id="btn-logout" class="boton-secundario" style="padding: 4px 10px; font-size: 10px; cursor:pointer;">Cerrar Sesión</button>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 1: GESTIÓN Y CONTROL DE USUARIOS -->
+      <div class="bloque-seccion-dashboard" id="usuarios">
+        <h2>GESTIÓN Y CONTROL TOTAL DE USUARIOS REGISTRADOS</h2>
+        <p style="color:var(--gris); margin-bottom:15px; font-size:14px;">Administra todos los usuarios del sistema (Jugadores, Organizadores, Árbitros, Entrenadores):</p>
+        
+        <table class="tabla-datos-sena">
+          <thead>
+            <tr>
+              <th>NOMBRE</th>
+              <th>CORREO</th>
+              <th>TELÉFONO</th>
+              <th>ROL / PERFIL</th>
+              <th>ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-usuarios-body"></tbody>
+        </table>
+      </div>
+
+      
+      <div class="bloque-seccion-dashboard" id="torneos">
+        <h2>CONTROL TOTAL DE TORNEOS Y PARTICIPANTES</h2>
+        <form id="form-crear-torneo-admin" style="margin-bottom:20px;">
+          <h3 style="font-size:18px; color:var(--negro); margin-bottom:12px;">Crear Torneo Directo (Modo Administrador)</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <div class="campo-formulario">
+              <label style="color:var(--negro);">Nombre del Torneo:</label>
+              <input type="text" id="adm-t-nombre" placeholder="Ej. Torneo Nacional SENA" style="background:var(--claro); color:var(--negro);" required>
+            </div>
+            <div class="campo-formulario">
+              <label style="color:var(--negro);">Imagen:</label>
+              <input type="text" id="adm-t-imagen" value="imágenes/torneo1.svg" style="background:var(--claro); color:var(--negro);" required>
+            </div>
+            <div class="campo-formulario">
+              <label style="color:var(--negro);">Cobro Persona ($):</label>
+              <input type="number" id="adm-t-persona" value="20000" style="background:var(--claro); color:var(--negro);" required>
+            </div>
+            <div class="campo-formulario">
+              <label style="color:var(--negro);">Cobro Equipo ($):</label>
+              <input type="number" id="adm-t-equipo" value="150000" style="background:var(--claro); color:var(--negro);" required>
+            </div>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Descripción Completa:</label>
+            <textarea id="adm-t-desc" rows="2" style="background:var(--claro); color:var(--negro);" required></textarea>
+          </div>
+          <button type="submit" class="boton_final" style="border:none; cursor:pointer;">CREAR TORNEO AHORA</button>
+        </form>
+
+        <h3 style="font-size:18px; color:var(--negro); margin-bottom:12px;">Todos los Torneos en la Plataforma</h3>
+        <div id="contenedor-torneos-admin"></div>
+      </div>
+
+      
+      <div class="bloque-seccion-dashboard" id="posiciones">
+        <h2>TABLAS DE POSICIONES Y SANCIÓN DE TARJETAS</h2>
+        
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+          <div>
+            <h3 style="font-size:18px; color:var(--negro); margin-bottom:10px;">Tabla de Posiciones Global</h3>
+            <table class="tabla-datos-sena">
+              <thead>
+                <tr>
+                  <th>EQUIPO</th>
+                  <th>PJ</th>
+                  <th>PTS</th>
+                  <th>ELIMINAR</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-posiciones-admin"></tbody>
+            </table>
+          </div>
+
+          <div>
+            <h3 style="font-size:18px; color:var(--negro); margin-bottom:10px;">Planilla Disciplinaria General</h3>
+            <table class="tabla-datos-sena">
+              <thead>
+                <tr>
+                  <th>JUGADOR</th>
+                  <th>EQUIPO</th>
+                  <th>SANCIÓN</th>
+                  <th>BORRAR</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-tarjetas-admin"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="bloque-seccion-dashboard" id="entrenadores">
+        <h2>INVENTARIO DE IMPLEMENTOS Y CONVOCATORIAS DE ENTRENAMIENTO</h2>
+        
+        <form id="form-inv-admin" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:12px; margin-bottom:20px;">
+          <div class="campo-formulario"><label style="color:var(--negro);">Balones:</label><input type="number" id="adm-balones" style="background:var(--claro); color:var(--negro);"></div>
+          <div class="campo-formulario"><label style="color:var(--negro);">Conos:</label><input type="number" id="adm-conos" style="background:var(--claro); color:var(--negro);"></div>
+          <div class="campo-formulario"><label style="color:var(--negro);">Platillos:</label><input type="number" id="adm-platillos" style="background:var(--claro); color:var(--negro);"></div>
+          <div class="campo-formulario"><label style="color:var(--negro);">Setas:</label><input type="number" id="adm-setas" style="background:var(--claro); color:var(--negro);"></div>
+          <div class="campo-formulario"><label style="color:var(--negro);">Escaleras:</label><input type="number" id="adm-escaleras" style="background:var(--claro); color:var(--negro);"></div>
+          <div class="campo-formulario"><label style="color:var(--negro);">Vallas:</label><input type="number" id="adm-vallas" style="background:var(--claro); color:var(--negro);"></div>
+          <div class="campo-formulario"><label style="color:var(--negro);">Petos:</label><input type="number" id="adm-petos" style="background:var(--claro); color:var(--negro);"></div>
+        </form>
+        <button form="form-inv-admin" type="submit" class="boton_final" style="border:none; cursor:pointer;">ACTUALIZAR INVENTARIO GENERAL</button>
+
+        <h3 style="font-size:18px; color:var(--negro); margin-top:25px; margin-bottom:10px;">Historial de Invitaciones a Entrenamientos</h3>
+        <table class="tabla-datos-sena">
+          <thead>
+            <tr>
+              <th>JUGADOR</th>
+              <th>CORREO</th>
+              <th>FECHA Y LUGAR</th>
+              <th>ACCIONAL</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-invitaciones-admin"></tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard-admin.js"></script>
+</body>
+</html>

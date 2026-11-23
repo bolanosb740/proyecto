@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTPLAY | Dashboard Entrenador</title>
+  <link rel="stylesheet" href="./css/estilos.css">
+  <link rel="stylesheet" href="./css/estilos-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="estructura-dashboard">
+    <aside class="menu-lateral-panel">
+      <div class="encabezado-menu-lateral">
+        <img src="imágenes/logo-futplay.jpg" alt="FUTPLAY">
+        <h2>FUTPLAY</h2>
+      </div>
+      <ul class="lista-opciones-menu">
+        <li class="opcion-activa"><a href="#">⚽ Invitar Jugadores</a></li>
+        <li><a href="#inventario">🎒 Inventario de Entrenamiento</a></li>
+        <li><a href="index.html">🏠 Volver al Inicio</a></li>
+      </ul>
+    </aside>
+
+    <main class="contenido-panel-principal">
+      <div class="barra-superior-usuario">
+        <h1>PANEL TÉCNICO DEL <span>ENTRENADOR</span></h1>
+        <div class="tarjeta-usuario-sesion">
+          <span class="etiqueta-rol-usuario">Director Técnico</span>
+          <strong id="usr-nombre">Cargando...</strong>
+          <button id="btn-logout" class="boton-secundario" style="padding: 4px 10px; font-size: 10px; cursor:pointer;">Cerrar Sesión</button>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 1: INVITAR JUGADORES A ENTRENAMIENTO -->
+      <div class="bloque-seccion-dashboard">
+        <h2>INVITAR JUGADORES A ENTRENAMIENTO</h2>
+        <form id="form-invitar" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Nombre del Jugador:</label>
+            <input type="text" id="inv-nombre" placeholder="Ej. Carlos Rodríguez" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Correo del Jugador:</label>
+            <input type="email" id="inv-correo" placeholder="jugador@correo.com" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Fecha / Hora Entrenamiento:</label>
+            <input type="datetime-local" id="inv-fecha" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Lugar / Sede:</label>
+            <input type="text" id="inv-lugar" placeholder="Cancha Barrio Unido" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+        </form>
+        <button form="form-invitar" type="submit" class="boton_final" style="margin-top:10px; border:none; cursor:pointer;">ENVIAR INVITACIÓN</button>
+
+        <h3 style="margin-top:25px; font-size:20px; color:var(--negro);">Invitaciones Enviadas</h3>
+        <table class="tabla-datos-sena">
+          <thead>
+            <tr>
+              <th>JUGADOR</th>
+              <th>CORREO</th>
+              <th>FECHA/HORA</th>
+              <th>SEDE</th>
+              <th>ESTADO</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-invitaciones"></tbody>
+        </table>
+      </div>
+
+      <!-- SECCIÓN 2: INVENTARIO DE ELEMENTOS DE ENTRENAMIENTO -->
+      <div class="bloque-seccion-dashboard" id="inventario">
+        <h2>INVENTARIO DE IMPLEMENTOS DE ENTRENAMIENTO</h2>
+        <p style="color:var(--gris); margin-bottom:15px; font-size:14px;">Gestiona y actualiza las cantidades de tus materiales deportivos:</p>
+        
+        <form id="form-inventario" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px;">
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">⚽ Balones:</label>
+            <input type="number" id="inv-balones" min="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">🔶 Conos:</label>
+            <input type="number" id="inv-conos" min="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">🔘 Platillos:</label>
+            <input type="number" id="inv-platillos" min="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">🍄 Setas:</label>
+            <input type="number" id="inv-setas" min="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">🪜 Escaleras Coordinación:</label>
+            <input type="number" id="inv-escaleras" min="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">🚧 Mini Vallas:</label>
+            <input type="number" id="inv-vallas" min="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">🎽 Petos:</label>
+            <input type="number" id="inv-petos" min="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+        </form>
+        <button form="form-inventario" type="submit" class="boton_final" style="margin-top:15px; border:none; cursor:pointer;">GUARDAR INVENTARIO</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard-entrenador.js"></script>
+</body>
+</html>

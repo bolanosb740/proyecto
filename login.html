@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTPLAY | Iniciar Sesión</title>
+  <link rel="stylesheet" href="./css/estilos.css">
+  <link rel="stylesheet" href="./css/estilos-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="pagina-autenticacion">
+  <header class="barra-navegacion">
+    <div class="logo">
+      <a href="index.html"><img src="imágenes/logo-futplay.jpg" alt="FUTPLAY"></a>
+    </div>
+    <div>
+      <a href="index.html" class="boton-secundario">Volver al Inicio</a>
+    </div>
+  </header>
+
+  <main class="contenedor-formulario-login">
+    <h2 class="titulo-formulario">INGRESO A <span>FUTPLAY</span></h2>
+    <p class="subtitulo-formulario">Ingresa tu correo y contraseña para acceder</p>
+    
+    <form id="form-login">
+      <div class="campo-formulario">
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" placeholder="ejemplo@correo.com" required>
+      </div>
+      <div class="campo-formulario">
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="boton-ingresar">Iniciar Sesión</button>
+    </form>
+
+    <div class="enlaces-ayuda">
+      <p><a href="recuperar.html">¿Olvidaste tu contraseña?</a></p>
+      <p style="margin-top:8px;">¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+    </div>
+  </main>
+
+  <script src="js/validaciones.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

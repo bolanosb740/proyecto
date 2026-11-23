@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTPLAY | Registro de Usuario</title>
+  <link rel="stylesheet" href="./css/estilos.css">
+  <link rel="stylesheet" href="./css/estilos-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="pagina-autenticacion">
+  <header class="barra-navegacion">
+    <div class="logo">
+      <a href="index.html"><img src="imágenes/logo-futplay.jpg" alt="FUTPLAY"></a>
+    </div>
+    <div>
+      <a href="index.html" class="boton-secundario">Volver al Inicio</a>
+    </div>
+  </header>
+
+  <main class="contenedor-formulario-login">
+    <h2 class="titulo-formulario">CREAR <span>CUENTA</span></h2>
+    <p class="subtitulo-formulario">Regístrate en la plataforma oficial de microfútbol</p>
+    
+    <form id="form-registro">
+      <div class="campo-formulario">
+        <label for="nombre">Nombre Completo:</label>
+        <input type="text" id="nombre" placeholder="Nombre y Apellido" required>
+      </div>
+      <div class="campo-formulario">
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" placeholder="ejemplo@correo.com" required>
+      </div>
+      <div class="campo-formulario">
+        <label for="telefono">Teléfono / Celular:</label>
+        <input type="tel" id="telefono" placeholder="3001234567" required>
+      </div>
+      <div class="campo-formulario">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" placeholder="Mínimo 8 caracteres, Mayús y Núm" required>
+        <button type="button" class="boton-ojo" onclick="alternarVerContrasena('password', this)">👁️</button>
+      </div>
+       <div class="campo-formulario">
+       <label for="confirmar">Confirmar Contraseña:</label>
+       <input type="password" id="confirmar" placeholder="Repite la contraseña" required>
+       <button type="button" class="boton-ojo" onclick="alternarVerContrasena('confirmar', this)">👁️</button>
+       </div>
+     <div class="campo-formulario">
+        <label for="rol">Tipo de Usuario / Rol:</label>
+        <select id="rol" required>
+          <option value="">Selecciona un rol...</option>
+          <option value="jugador">Jugador / Cliente</option>
+          <option value="organizador">Organizador de Torneos</option>
+          <option value="arbitro">Árbitro</option>
+          <option value="entrenador">Entrenador / Director Técnico</option>
+        </select>
+      </div>
+      <button type="submit" class="boton-ingresar">Crear Cuenta</button>
+    </form>
+
+    <div class="enlaces-ayuda">
+      <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+    </div>
+  </main>
+
+  <script src="js/validaciones.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/registro.js"></script>
+</body>
+</html>

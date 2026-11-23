@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTPLAY | Dashboard Árbitro</title>
+  <link rel="stylesheet" href="./css/estilos.css">
+  <link rel="stylesheet" href="./css/estilos-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="estructura-dashboard">
+    <aside class="menu-lateral-panel">
+      <div class="encabezado-menu-lateral">
+        <img src="imágenes/logo-futplay.jpg" alt="FUTPLAY">
+        <h2>FUTPLAY</h2>
+      </div>
+      <ul class="lista-opciones-menu">
+        <li class="opcion-activa"><a href="#">📜 Solicitar Afiliación a Torneos</a></li>
+        <li><a href="#posiciones">📊 Actualizar Tabla de Posiciones</a></li>
+        <li><a href="#tarjetas">🟨🟥🟦 Planilla de Tarjetas</a></li>
+        <li><a href="index.html">🏠 Volver al Inicio</a></li>
+      </ul>
+    </aside>
+
+    <main class="contenido-panel-principal">
+      <div class="barra-superior-usuario">
+        <h1>PANEL DE <span>JUZGAMIENTO Y ARBITRAJE</span></h1>
+        <div class="tarjeta-usuario-sesion">
+          <span class="etiqueta-rol-usuario">Árbitro Oficial</span>
+          <strong id="usr-nombre">Cargando...</strong>
+          <button id="btn-logout" class="boton-secundario" style="padding: 4px 10px; font-size: 10px; cursor:pointer;">Cerrar Sesión</button>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 1: SOLICITAR AFILIACIÓN A TORNEOS -->
+      <div class="bloque-seccion-dashboard">
+        <h2>SOLICITAR AFILIACIÓN DE ARBITRAJE A TORNEO</h2>
+        <form id="form-solicitar-arb" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:15px;">
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Selecciona Torneo:</label>
+            <select id="arb-torneo-sel" style="background:var(--claro); color:var(--negro);" required></select>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Tarifa Pretendida (COP):</label>
+            <input type="number" id="arb-tarifa" placeholder="50000" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario" style="display:flex; align-items:flex-end;">
+            <button type="submit" class="boton_final" style="width:100%; border:none; cursor:pointer;">ENVIAR SOLICITUD</button>
+          </div>
+        </form>
+
+        <h3 style="margin-top:20px; font-size:20px; color:var(--negro);">Mis Afiliaciones de Arbitraje</h3>
+        <table class="tabla-datos-sena">
+          <thead>
+            <tr>
+              <th>TORNEO</th>
+              <th>TARIFA</th>
+              <th>ESTADO</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-solicitudes-arb"></tbody>
+        </table>
+      </div>
+
+      <!-- SECCIÓN 2: ACTUALIZAR TABLA DE POSICIONES -->
+      <div class="bloque-seccion-dashboard" id="posiciones">
+        <h2>ACTUALIZAR TABLA DE POSICIONES</h2>
+        <p style="color:var(--gris); margin-bottom:15px; font-size:14px;">Ingresa o modifica las estadísticas de los equipos en los torneos donde estás afiliado:</p>
+        
+        <form id="form-posicion" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:12px;">
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Torneo:</label>
+            <select id="p-torneo" style="background:var(--claro); color:var(--negro);" required></select>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Equipo:</label>
+            <input type="text" id="p-equipo" placeholder="Depor FC" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">PJ:</label>
+            <input type="number" id="p-pj" min="0" value="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">PG:</label>
+            <input type="number" id="p-pg" min="0" value="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">PE:</label>
+            <input type="number" id="p-pe" min="0" value="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">PP:</label>
+            <input type="number" id="p-pp" min="0" value="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">GF:</label>
+            <input type="number" id="p-gf" min="0" value="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">GC:</label>
+            <input type="number" id="p-gc" min="0" value="0" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+        </form>
+        <button form="form-posicion" type="submit" class="boton_final" style="margin-top:15px; border:none; cursor:pointer;">GUARDAR EN TABLA</button>
+
+        <h3 style="margin-top:25px; font-size:20px; color:var(--negro);">Tabla de Posiciones Actual</h3>
+        <table class="tabla-datos-sena">
+          <thead>
+            <tr>
+              <th>EQUIPO</th>
+              <th>PJ</th>
+              <th>PG</th>
+              <th>PE</th>
+              <th>PP</th>
+              <th>GF</th>
+              <th>GC</th>
+              <th>PTS</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-posiciones-body"></tbody>
+        </table>
+      </div>
+
+      <!-- SECCIÓN 3: REGISTRO DE TARJETAS EN CAMPO -->
+      <div class="bloque-seccion-dashboard" id="tarjetas">
+        <h2>REGISTRO DE DISCIPLINA Y TARJETAS EN EL CAMPO</h2>
+        <p style="color:var(--gris); margin-bottom:15px; font-size:14px;">Registra amonestaciones y expulsiones (Tarjeta Amarilla, Roja y Azul):</p>
+
+        <form id="form-tarjeta" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:15px;">
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Torneo:</label>
+            <select id="tj-torneo" style="background:var(--claro); color:var(--negro);" required></select>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Equipo del Jugador:</label>
+            <input type="text" id="tj-equipo" placeholder="Ej. Titanio FC" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Nombre del Jugador:</label>
+            <input type="text" id="tj-jugador" placeholder="Ej. Andrés Gómez" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Tipo de Tarjeta:</label>
+            <select id="tj-tipo" style="background:var(--claro); color:var(--negro);">
+              <option value="amarilla">🟨 Amarilla</option>
+              <option value="roja">🟥 Roja</option>
+              <option value="azul">🟦 Azul (Sanción Temporal)</option>
+            </select>
+          </div>
+          <div class="campo-formulario">
+            <label style="color:var(--negro);">Motivo / Minuto:</label>
+            <input type="text" id="tj-motivo" placeholder="Falta técnica min 25" style="background:var(--claro); color:var(--negro);" required>
+          </div>
+        </form>
+        <button form="form-tarjeta" type="submit" class="boton_final" style="margin-top:15px; border:none; cursor:pointer;">REGISTRAR SANCIÓN</button>
+
+        <h3 style="margin-top:25px; font-size:20px; color:var(--negro);">Planilla Disciplinaria Registrada</h3>
+        <table class="tabla-datos-sena">
+          <thead>
+            <tr>
+              <th>JUGADOR</th>
+              <th>EQUIPO</th>
+              <th>TARJETA</th>
+              <th>MOTIVO / MINUTO</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-tarjetas-body"></tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard-arbitro.js"></script>
+</body>
+</html>

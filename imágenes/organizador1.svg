@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+<rect width="800" height="800" fill="#07101e"/>
+<circle cx="400" cy="300" r="145" fill="#0268fb"/>
+<circle cx="400" cy="270" r="58" fill="#fff"/>
+<path d="M255 590c10-145 75-220 145-220s135 75 145 220z" fill="#fff"/>
+<path d="M245 650h310" stroke="#0268fb" stroke-width="30"/>
+<text x="400" y="730" text-anchor="middle" fill="#fff" font-family="Arial" font-size="42" font-weight="800">ORGANIZADOR</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800">
+<rect width="1000" height="800" fill="#03060b"/>
+<g fill="#fff">
+<circle cx="280" cy="300" r="55"/><circle cx="500" cy="250" r="65"/><circle cx="720" cy="300" r="55"/>
+<path d="M180 650c5-180 65-270 100-270s95 90 100 270z"/>
+<path d="M365 650c8-210 85-315 135-315s127 105 135 315z"/>
+<path d="M620 650c5-180 65-270 100-270s95 90 100 270z"/>
+</g>
+<g fill="#0268fb"><circle cx="280" cy="300" r="25"/><circle cx="500" cy="250" r="30"/><circle cx="720" cy="300" r="25"/></g>
+<text x="500" y="90" text-anchor="middle" fill="#5fa4ff" font-family="Arial" font-size="52" font-weight="900">EQUIPO • PASIÓN • UNIÓN</text>
+</svg>
